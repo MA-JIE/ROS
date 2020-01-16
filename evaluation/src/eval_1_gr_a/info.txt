@@ -1,0 +1,9 @@
+A package for ROS continuous evaluation 1 (2018) 
+
+The package allows to simulate centralized controf of a platoon of vehicles.
+A very unreasonable platoon control, but simple enough in terms of inter-
+node communications for evaluation 1!
+Vehicle "i" in the platoon is controlled based on the position of the leader
+only (irrespective of where preceding vehicles are) and its rank in the 
+platoon, the control aiming to keep vehicle "i" at a distance i*safe_dis
+from the leader. 

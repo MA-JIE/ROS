@@ -1,0 +1,33 @@
+<launch>
+  <group ns="blue_group">
+  <param name="radius" type="double" value="2.0"/>
+  <param name="accelKey" type="int" value="43" />
+  <param name="decelKey" type="int" value="45" />
+  <param name="color" type="string" value="blue"/>
+  <node pkg="eval_1_gr_a" name = "blue_leader" type="eval_1_gr_a_node" clear_params="true" >
+  </node>
+  <node pkg="eval_1_gr_a" name = "follwer_1" type="vehicle_gr_a" clear_params="true">
+  </node>
+  <node pkg="eval_1_gr_a" name = "follwer_2" type="vehicle_gr_a" clear_params="true">
+  </node>
+  <node pkg="ck_gr_a" name = "ck" type = "ck_gr_a_node" clear_params="true">
+  </node>
+  </group>
+  <group ns="red_group">
+  <param name="radius" type="double" value="4.0"/>
+  <param name="accelKey" type="int" value="97" />
+  <param name="decelKey" type="int" value="98" />
+  <param name=" color" type="string" value="red"/>
+  <node pkg="eval_1_gr_a" name = "red_leader" type="eval_1_gr_a_node" clear_params="true" >
+    <param name="color" type="string" value="red"/>
+  </node>
+  <node pkg="eval_1_gr_a" name = "follwer_1" type="vehicle_gr_a" clear_params="true">
+  </node>
+  <node pkg="eval_1_gr_a" name = "follwer_2" type="vehicle_gr_a" clear_params="true">
+  </node>
+    <node pkg="ck_gr_a" name = "ck" type = "ck_gr_a_node" clear_params="true">
+  </node>
+  </group>
+  
+
+</launch>

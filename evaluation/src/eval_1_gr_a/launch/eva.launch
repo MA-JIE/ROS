@@ -1,0 +1,12 @@
+
+<launch>
+  <param name="radius" type="double" value="2.0"/>
+  <node pkg="eval_1_gr_a" name = "blue_leader" type="eval_1_gr_a_node" clear_params="true" >
+    <remap from="/keystroke" to="/the_key_typed" />
+  </node>
+  <node pkg="eval_1_gr_a" name = "follwer_1" type="vehicle_gr_a" clear_params="true">
+  <remap from ="/follwer_1/leader_angle" to="/leader_angle" />
+  </node>
+  <node pkg="ck_gr_a" name = "ck" type = "ck_gr_a_node" clear_params="true">
+  </node>
+</launch>

@@ -1,0 +1,66 @@
+<launch>
+   
+
+    <!-- The global parameters of the application. -->
+    <!-- They define the desired circular path and the robot's initial posture -->
+
+    <param name="circleRadius" type="double" value="2.0" />
+
+    <param name="Ktheta"       type="double" value="1.0" />
+    <param name="Ky"           type="double" value="5.0" />
+    <param name="Vref"         type="double" value="1.0" />
+
+    <!-- The robot/sensor simulator node -->
+
+
+    <!-- The path publisher node publishes the path for visualization in rviz -->
+    <node pkg="ecn_turtle_control" type="ecn_turtle_path_publisher" name="path_publisher">
+      <remap from="/kbdsub" to="/key_typed" />
+    </node>
+
+    <!-- The capture_key node to send radius modification messages to path_publisher -->
+    <node pkg="capture_key" type="capture_key_node" name="capture_key">
+    </node>
+
+    <!-- The robot publisher node publishes a marker to visualize the robot posture in rviz -->
+   <group ns = "group_4" >
+    <param name="x0"           type="double" value="5.5" />
+    <param name="y0"           type="double" value="0.0" />
+    <param name="theta0"       type="double" value="1.0" />
+    <node pkg="ecn_turtle_control" type="ecn_turtle_robot_simulator" name="robot_simulator">
+      
+      
+    </node>
+    <node pkg="ecn_turtle_control" type="ecn_turtle_robot_publisher" name="robot_publisher">
+       
+    </node>
+    <node pkg="ecn_turtle_control" type="ecn_turtle_robot_publisher" name="robot_publisher1">
+       
+    </node>
+   </group>
+   <group ns = "group_3" >
+     <param name="x0"           type="double" value="3.5" />
+    <param name="y0"           type="double" value="0.0" />
+    <param name="theta0"       type="double" value="1.0" />
+    <node pkg="ecn_turtle_control" type="ecn_turtle_robot_simulator" name="robot_simulator">
+          
+    </node>
+    <node pkg="ecn_turtle_control" type="ecn_turtle_robot_publisher" name="robot_publisher">
+       
+    </node>
+    <node pkg="ecn_turtle_control" type="ecn_turtle_robot_publisher" name="robot_publisher1">
+       
+    </node>
+   </group>
+    
+    <node pkg="ecn_turtle_control" type="ecn_turtle_control_node" name="controller">
+       <remap from="/radiusSub" to="/circleRadius" />
+       <remap from="/errorSub" to="/controlError" />
+    </node>
+
+    <!-- Rviz for a visual feedback -->
+    <node pkg="rviz" type="rviz" name="rviz">
+    </node>
+ 
+
+</launch>
